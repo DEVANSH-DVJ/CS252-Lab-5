@@ -180,13 +180,13 @@ void experiment(bool enableCtsRts, std::string wifiManager) {
   // continues
   // onOffhelper object created with UDP as transport layer, and
   // (10.0.0.1,cbrPort) as destination IP and port With this statement we are
-  // assuming that 10.0.0.1 as the IP address of node "n0"
+  // assuming that 10.0.0.1 as the IP address of node 0
   OnOffHelper onOffHelper("ns3::UdpSocketFactory",
                           InetSocketAddress(Ipv4Address("10.0.0.1"), cbrPort));
 
   // Packet size, datarate attributes of the OnOffHelper object
   uint32_t payloadSize = 2200; /* Transport layer payload size in bytes. */
-  std::string dataRate = "35Mbps";
+  std::string dataRate = "54Mbps";
 
   // OnOff source can be set to just generate packets at some data rate)
   onOffHelper.SetConstantRate(DataRate(dataRate), payloadSize);
@@ -254,7 +254,8 @@ void experiment(bool enableCtsRts, std::string wifiManager) {
       totalTput += i->second.rxBytes * 8.0 / 7.0 / 1000 / 1000;
     }
   }
-  std::cout << "Total channel throughput = " << totalTput << " Mbps" << std::endl;
+  std::cout << "Total channel throughput = " << totalTput << " Mbps"
+            << std::endl;
   // Cleanup
   Simulator::Destroy();
 }
@@ -271,11 +272,12 @@ int main(int argc, char **argv) {
   cmd.Parse(argc, argv);
   //**Upto here
 
-  std::cout << "Hidden station experiment with RTS/CTS disabled:\n"
-            << std::flush;
+  std::cout
+      << "Hidden station experiment (no contention) with RTS/CTS disabled:\n";
   experiment(false, wifiManager);
   std::cout << "------------------------------------------------\n";
-  std::cout << "Hidden station experiment with RTS/CTS enabled:\n";
+  std::cout
+      << "Hidden station experiment (no contention) with RTS/CTS enabled:\n";
   experiment(true, wifiManager);
 
   return 0;

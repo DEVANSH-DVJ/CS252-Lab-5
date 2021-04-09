@@ -175,7 +175,7 @@ void experiment(bool enableCtsRts, std::string wifiManager) {
 
   // Packet size, datarate attributes of the OnOffHelper object
   uint32_t payloadSize = 2200; /* Transport layer payload size in bytes. */
-  std::string dataRate = "10Mbps";
+  std::string dataRate = "10.0Mbps";
 
   // OnOff source can be set to just generate packets at some data rate)
   onOffHelper.SetConstantRate(DataRate(dataRate), payloadSize);
@@ -275,11 +275,11 @@ int main(int argc, char **argv) {
   cmd.Parse(argc, argv);
   //**Upto here
 
-  std::cout << "Hidden station experiment with RTS/CTS disabled:\n"
+  std::cout << "No hidden stations experiment with RTS/CTS disabled:\n"
             << std::flush;
   experiment(false, wifiManager);
   std::cout << "------------------------------------------------\n";
-  std::cout << "Hidden station experiment with RTS/CTS enabled:\n";
+  std::cout << "No hidden stations experiment with RTS/CTS enabled:\n";
   experiment(true, wifiManager);
 
   return 0;

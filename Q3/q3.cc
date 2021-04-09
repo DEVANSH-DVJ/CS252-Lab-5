@@ -211,7 +211,7 @@ void experiment(bool enableCtsRts, std::string wifiManager) {
 
   // Packet size, datarate attributes of the OnOffHelper object
   uint32_t payloadSize = 2200; /* Transport layer payload size in bytes. */
-  std::string dataRate = "10Mbps";
+  std::string dataRate = "10.0Mbps";
 
   // OnOff source can be set to just generate packets at some data rate)
   onOffHelperA.SetConstantRate(DataRate(dataRate), payloadSize);
@@ -225,8 +225,11 @@ void experiment(bool enableCtsRts, std::string wifiManager) {
   double stime;
   stime = 1.0000 + (double)1 / 100.0;
   onOffHelperA.SetAttribute("StartTime", TimeValue(Seconds(stime)));
+  stime += (double)1 / 100.0;
   onOffHelperB.SetAttribute("StartTime", TimeValue(Seconds(stime)));
+  stime += (double)1 / 100.0;
   onOffHelperC.SetAttribute("StartTime", TimeValue(Seconds(stime)));
+
   cbrApps.Add(onOffHelperA.Install(nodes.Get(0)));
   cbrApps.Add(onOffHelperB.Install(nodes.Get(2)));
   cbrApps.Add(onOffHelperC.Install(nodes.Get(4)));
@@ -287,7 +290,7 @@ void experiment(bool enableCtsRts, std::string wifiManager) {
     //   Simulator::Stops at "second 8".
     if (i->first > 3) {
       Ipv4FlowClassifier::FiveTuple t = classifier->FindFlow(i->first);
-      std::cout << "Flow " << i->first - 2 << " (" << t.sourceAddress << " -> "
+      std::cout << "Flow " << i->first - 3 << " (" << t.sourceAddress << " -> "
                 << t.destinationAddress << ")\n";
       std::cout << "  Tx Packets: " << i->second.txPackets << "\n";
       std::cout << "  Tx Bytes:   " << i->second.txBytes << "\n";

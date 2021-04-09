@@ -269,7 +269,7 @@ void experiment(bool enableCtsRts, std::string wifiManager) {
       totalTput += i->second.rxBytes * 8.0 / 7.0 / 1000 / 1000;
     }
   }
-  std::cout << "Total channel throughput = " << totalTput << std::endl;
+  std::cout << "Total channel throughput = " << totalTput << " Mbps" << std::endl;
   // Cleanup
   Simulator::Destroy();
 }

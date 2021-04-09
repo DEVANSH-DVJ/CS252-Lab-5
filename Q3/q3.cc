@@ -88,33 +88,32 @@ void experiment(bool enableCtsRts, std::string wifiManager) {
   // See above: we are creating a model in which n0 - n1  and n1 - n2 are
   // connected So set their loss to lesser amount
 
-  // set symmetric loss 0 <-> 1 to 50 dB, good coverage
   lossModel->SetLoss(nodes.Get(0)->GetObject<MobilityModel>(),
                      nodes.Get(1)->GetObject<MobilityModel>(), 50);
-
-  // set symmetric loss 0 <-> 2 to 50 dB, good coverage
   lossModel->SetLoss(nodes.Get(2)->GetObject<MobilityModel>(),
                      nodes.Get(3)->GetObject<MobilityModel>(), 50);
-
-  // set symmetric loss 0 <-> 2 to 50 dB, good coverage
   lossModel->SetLoss(nodes.Get(4)->GetObject<MobilityModel>(),
                      nodes.Get(5)->GetObject<MobilityModel>(), 50);
 
-  // set symmetric loss 0 <-> 2 to 50 dB, good coverage
   lossModel->SetLoss(nodes.Get(0)->GetObject<MobilityModel>(),
                      nodes.Get(3)->GetObject<MobilityModel>(), 50);
-
-  // set symmetric loss 0 <-> 2 to 50 dB, good coverage
   lossModel->SetLoss(nodes.Get(1)->GetObject<MobilityModel>(),
                      nodes.Get(2)->GetObject<MobilityModel>(), 50);
 
-  // set symmetric loss 0 <-> 2 to 50 dB, good coverage
   lossModel->SetLoss(nodes.Get(2)->GetObject<MobilityModel>(),
                      nodes.Get(5)->GetObject<MobilityModel>(), 50);
-
-  // set symmetric loss 0 <-> 2 to 50 dB, good coverage
   lossModel->SetLoss(nodes.Get(3)->GetObject<MobilityModel>(),
                      nodes.Get(4)->GetObject<MobilityModel>(), 50);
+
+  lossModel->SetLoss(nodes.Get(0)->GetObject<MobilityModel>(),
+                     nodes.Get(2)->GetObject<MobilityModel>(), 50);
+  lossModel->SetLoss(nodes.Get(1)->GetObject<MobilityModel>(),
+                     nodes.Get(3)->GetObject<MobilityModel>(), 50);
+
+  lossModel->SetLoss(nodes.Get(2)->GetObject<MobilityModel>(),
+                     nodes.Get(4)->GetObject<MobilityModel>(), 50);
+  lossModel->SetLoss(nodes.Get(3)->GetObject<MobilityModel>(),
+                     nodes.Get(5)->GetObject<MobilityModel>(), 50);
 
   // Create a YansWifiChannel type object in the variable called "wifiChannel"
   // Yans stands for Yet Another Network Simulator

@@ -192,7 +192,7 @@ void experiment(bool enableCtsRts, std::string wifiManager) {
 
   // Packet size, datarate attributes of the OnOffHelper object
   uint32_t payloadSize = 2200; /* Transport layer payload size in bytes. */
-  std::string dataRate = "10Mbps";
+  std::string dataRate = "10.0Mbps";
 
   // OnOff source can be set to just generate packets at some data rate)
   onOffHelperA.SetConstantRate(DataRate(dataRate), payloadSize);
@@ -205,16 +205,9 @@ void experiment(bool enableCtsRts, std::string wifiManager) {
   double stime;
   stime = 1.0000 + (double)1 / 100.0;
   onOffHelperA.SetAttribute("StartTime", TimeValue(Seconds(stime)));
-  cbrApps.Add(onOffHelperA.Install(nodes.Get(0)));
-
-  // flow 2:  node 1 -> node 0. Set start time attributes slightly different
-  /** \internal
-   * The slightly different start times and data rates are a workaround
-   * for \bugid{388} and \bugid{912}
-   */
-
-  stime = 1.0000 + (double)2 / 100.0;
+  stime += (double)1 / 100.0;
   onOffHelperC.SetAttribute("StartTime", TimeValue(Seconds(stime)));
+  cbrApps.Add(onOffHelperA.Install(nodes.Get(0)));
   cbrApps.Add(onOffHelperC.Install(nodes.Get(2)));
 
   /** \internal

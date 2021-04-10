@@ -16,7 +16,6 @@ q4a = [2.7296, 5.4592, 8.1888, 7.0430, 3.8856, 1.7824, 0.6977, 0.1884, 0.0331, 0
 q4c = [2.7245, 5.4516, 8.1787, 10.9032, 13.6303, 16.3573, 19.0844, 21.8090, 22.4710, 22.5219]
 q4t = [5.4541, 10.9108, 16.3675, 17.9462, 17.5159, 18.1397, 19.7821, 21.9974, 22.5041, 22.5474]
 
-plt.figure(figsize=(20,10))
 plt.plot(per, q1d, color='blue', label='RTS/CTS disabled')
 plt.plot(per, q1e, color='red', label='RTS/CTS enabled')
 plt.ylabel('Total throughput (in Mbps)')
@@ -26,7 +25,6 @@ plt.legend()
 plt.grid()
 plt.show()
 
-plt.figure(figsize=(20,10))
 plt.plot(per, q2d, color='blue', label='RTS/CTS disabled')
 plt.plot(per, q2e, color='red', label='RTS/CTS enabled')
 plt.ylabel('Total throughput (in Mbps)')
@@ -36,7 +34,6 @@ plt.legend()
 plt.grid()
 plt.show()
 
-plt.figure(figsize=(20,10))
 plt.plot(per, q3t, color='blue', label='Total throughput')
 plt.plot(per, q3a, color='red', label='Flow 1')
 plt.plot(per, q3b, color='green', label='Flow 2')
@@ -48,7 +45,6 @@ plt.legend()
 plt.grid()
 plt.show()
 
-plt.figure(figsize=(20,10))
 plt.plot(per, q4t, color='blue', label='Total throughput')
 plt.plot(per, q4a, color='red', label='Flow 1')
 plt.plot(per, q4c, color='orange', label='Flow 2')
